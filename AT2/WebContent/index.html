@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="agents">
+<head>
+<meta charset="ISO-8859-1">
+<title>Agents environment </title>
+	<script src="js/toast.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/angular-route.js"></script>
+	<script src="js/angular-ui-router.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="app/main.js"></script>
+	<script src="app/services.js"></script>
+</head>
+<body >
+
+	<div ng-controller="initController" ng-init="init()">
+		Izaberi i pokreni agente:<br>
+		<select id="select1" ng-model="selectedItem" ng-change="update()">
+			<option ng-repeat="y in allAgents">{{y}}</option>
+		</select>
+		
+		<br><br><br>Pokrenuti agenti:<br>
+		<ul>
+			<li ng-repeat="x in runningAgents">
+	      		{{ x }} 
+	    	</li>
+	  	</ul>
+	  	
+	<div style="margin-left:500px;margin-top:-80px;">
+	Messages:
+		<table>
+		<tr><td>Performative:</td><td><select id="select2">
+		<option>ACCEPT_PROPOSAL</option>
+		<option>AGREE</option>
+		<option>CANCEL</option>
+		<option>CALL_FOR_PROPOSAL</option>
+		<option>CONFIRM</option>
+		<option>DISCONFIRM</option>
+		<option>FAILURE</option>
+		<option>INFORM</option>
+		<option>INFORM_IF</option>
+		<option>INFORM_REF</option>
+		<option>NOT_UNDERSTOOD</option>
+		<option>PROPOSE</option>
+		<option>QUERY_IF</option>
+		<option>QUERY_REF</option>
+		<option>REJECT_PROPOSAL</option>
+		<option>REQUEST</option>
+		<option>REQUEST_WHEN</option>
+		<option>REQUEST_WHENEVER</option>
+		<option>SUBSCRIBE</option>
+		<option>PROXY</option>
+		<option>PROPAGATE</option>
+		<option>UNKNOWN</option>
+		</select></td></tr>
+		<tr><td>Sender:</td><td><select id="selectSender"></select></td></tr>
+		<tr><td>Receiver:</td><td><select id="selectReceiver"></select></td></tr>
+		<tr><td>Reply to:</td><td><input type="text" id="replyTo"></td></tr>
+		<tr><td>Content:</td><td><input type="text" id="content"></td></tr>
+		<tr><td>Language:</td><td><input type="text" id="language"></td></tr>
+		<tr><td>Encoding:</td><td><input type="text" id="encoding"></td></tr>
+		<tr><td>Onthology:</td><td><input type="text" id="onthology"></td></tr>
+		<tr><td>Protocol:</td><td><input type="text" id="protocol"></td></tr>
+		<tr><td>Conversation ID:</td><td><input type="text" id="conversationId"></td></tr>
+		<tr><td>In reply to:</td><td><input type="text" id="inReplyTo"></td></tr>
+		<tr><td>Reply by:</td><td><input type="text" id="replyBy"></td></tr>
+		<tr><td><button ng-click="sendMessage()">Send ACL message</button></td></tr>
+		</table>
+		</div>
+		<br><br><br>
+		<div style="margin-left:500px;margin-top:0px;">
+		Console messages:
+		<table>
+		<tr><td><textarea rows="10" cols="10" id="textarea" readonly></textarea></td></tr>
+		<tr><td><button ng-click="clearMessages()">Clear messages</button></td></tr>
+		</table>
+		</div>
+	</div>
+	
+</body>
+</html>
